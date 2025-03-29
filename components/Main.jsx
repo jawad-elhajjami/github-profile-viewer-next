@@ -58,7 +58,7 @@ const Main = () => {
     }
     
     return ( 
-        <div className="p-8 bg-white border border-gray-200 rounded-2xl shadow-2xl lg:min-w-lg min-w-md flex flex-col items-center">    
+        <div className="p-8 bg-white border border-gray-200 rounded-2xl shadow-2xl lg:min-w-lg md:min-w-md sm:min-w-sm flex flex-col items-center">    
             <svg
                 viewBox="0 0 256 250"
                 width="60"
