@@ -1,7 +1,9 @@
+import Main from '@/components/Main'
+
 const Home = () => {
   return ( 
-    <div>
-      <h1>Hello world</h1>
+    <div className='flex items-center justify-center flex-col min-h-screen'>
+      <Main />
     </div>
    );
 }
