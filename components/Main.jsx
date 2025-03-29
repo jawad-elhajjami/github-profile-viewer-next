@@ -16,6 +16,20 @@ const Main = () => {
         setLoading(true);
         let req = await fetch(`https://api.github.com/users/${username}`);
         let user = await req.json();
+
+        if (req.status === 403){
+            alert("API rate limit exceeded !");
+            setLoading(false)
+            return;
+        }
+
+        if(user.message === 'Not Found'){
+            setLoading(false)
+            setSearchResult({})
+            setNotFound(true);
+            return;
+        }
+        // destructure data after checking if request has no errors
         let {avatar_url, bio, name, login, location, html_url, followers} = user;
         let userData = {
             avatar_url,
@@ -26,13 +40,6 @@ const Main = () => {
             html_url,
             followers
         };
-
-        if(user.message === 'Not Found'){
-            setLoading(false)
-            setSearchResult({})
-            setNotFound(true);
-            return;
-        }
 
         setLoading(false)
         setSearchResult(userData);
@@ -78,7 +85,9 @@ const Main = () => {
             </div>
             <button 
                 type="submit" 
-                className="bg-gray-900 text-white mt-4 p-4 rounded-lg hover:bg-gray-700 cursor-pointer duration-300">
+                className="bg-gray-900 text-white mt-4 p-4 rounded-lg hover:bg-gray-700 cursor-pointer duration-300"
+                disabled={loading}
+                >
                 {loading ? 'Searching...' : 'Search'}
             </button>
           </Form>
