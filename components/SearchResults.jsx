@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 const SearchResults = ({user}) => {
     return ( 
-        <div className="lg:min-w-lg min-w-md">
+        <div className="lg:min-w-lg md:min-w-md w-[300px]">
             <h2 className="text-2xl font-bold mt-8 text-center">Search Results</h2>
             <div className="flex items-center w-full dark:hover:bg-zinc-900 hover:bg-gray-100 rounded-lg p-4 gap-4 mt-4 duration-300 border border-gray-200 dark:border-zinc-700/50 relative">
                 <Image 

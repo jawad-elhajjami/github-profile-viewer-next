@@ -70,7 +70,7 @@ const Main = () => {
     
     return ( 
         <>
-        <Card className="max-w-xl lg:min-w-lg min-w-md">
+        <Card className="max-w-xl lg:min-w-lg md:min-w-md">
             <CardHeader>
                 <CardTitle>Search for profile</CardTitle>
                 <CardDescription>Type profile username in the search bar.</CardDescription>
