@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import SearchResults from './SearchResults'
+import { Loader2 } from "lucide-react"
 import NotFound from './NotFound'
 import { Button } from "@/components/ui/button"
 import {
@@ -27,7 +28,7 @@ const Main = () => {
         setLoading(true);
         let req = await fetch(`https://api.github.com/users/${username}`);
         let user = await req.json();
-
+        console.log(user);
         if (req.status === 403){
             alert("API rate limit exceeded !");
             setLoading(false)
@@ -41,8 +42,9 @@ const Main = () => {
             return;
         }
         // destructure data after checking if request has no errors
-        let {avatar_url, bio, name, login, location, html_url, followers} = user;
+        let {id, avatar_url, bio, name, login, location, html_url, followers} = user;
         let userData = {
+            id,
             avatar_url,
             bio,
             name,
@@ -84,6 +86,7 @@ const Main = () => {
                                 <Input 
                                     id="username" 
                                     placeholder="Github Username"
+                                    value={username}
                                     onChange={(e) => setUsername(e.target.value)} 
                                 />
                                 <small className='text-red-600'>{error ? 'Username cannot be empty' : ''}</small>
@@ -91,9 +94,11 @@ const Main = () => {
                         </div>
                     
                 </CardContent>
-                <CardFooter className="flex justify-between">
-                    <Button variant="outline">Cancel</Button>
-                    <Button type="submit" disabled={loading}>{loading ? 'Searching...' : 'Search'}</Button>
+                <CardFooter className="flex justify-between mt-4">
+                    <Button type="button" onClick={() => setUsername('')} variant="outline">Cancel</Button>
+                    <Button type="submit" disabled={loading}>
+                        {loading ? <Loader2 className="animate-spin" /> : 'Search'}
+                    </Button>
                 </CardFooter>
             </form>
         </Card>

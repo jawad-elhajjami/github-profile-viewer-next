@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Header = () => {
     return ( 
-        <header className="fixed w-full p-4 border-b border-gray-300 bg-white dark:border-neutral-800 dark:bg-zinc-900">
+        <header className="sticky top-0 w-full p-4 border-b border-gray-300 bg-white dark:border-neutral-800 dark:bg-zinc-900">
             <div className="container max-w-7xl m-auto flex items-center justify-between ">
                 <Link href={"/"} className="hidden md:block">
                     <h1 className="lg:text-2xl text-lg font-bold dark:text-white text-gray-800 flex gap-2 items-center">    
